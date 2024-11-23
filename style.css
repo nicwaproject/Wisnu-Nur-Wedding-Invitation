@@ -146,7 +146,9 @@ nav ul li a:hover {
 }
 /* .......SECTION 1........... */
 
+
 #section1 {
+    position: relative; /* Set the parent to relative for absolute positioning inside */
     background-image: url('background2.jpg'); /* Desktop background image */
     background-size: cover;
     background-position: center;
@@ -155,11 +157,13 @@ nav ul li a:hover {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    height:100vh;
+    height: 100vh;
     padding-top: 40px;
 }
 
 .couple-name {
+    position: absolute;
+    z-index: 2;
     font-size: 6em;
     color: var(--primary-color);
     margin: 20px;
@@ -167,11 +171,21 @@ nav ul li a:hover {
     font-family: "Updock", cursive;
     font-weight: 400;
     font-style: normal;
-    padding-bottom:30px;
+    padding-bottom: 30px;
     border-radius: 10px; /* Add border radius */
     background-color: var(--third-color);
-    border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+}
+
+.couple-image {
+    position: absolute; /* Position image absolutely within #section1 */
+    bottom: 0; /* Center vertically */
+    left: 0; /* Center horizontally */
+    max-width: 300px; /* Adjust size as needed */
+    max-height: auto;
+    z-index: 1; /* Ensure the image appears above the background but behind the text */
+    opacity: 0.9; /* Slight transparency (optional) */
+    pointer-events: none; /* Ensure image does not block clicks on the text */
 }
 
 /* ..........SECTION 2......... */
@@ -706,13 +720,19 @@ footer {
     /* SECTION1 */
     #section1 {
         background-image: url('background.jpg'); /* Mobile background image */
-        align-items: center;
+        align-items: flex-start;
+        padding-top: 100px;
     }
     .couple-name {
-        font-size: 5em;
-        margin: 5px 5px 5px 5px;
+        font-size: 4em;
+        margin: 100px 5px 5px 5px;
         padding: 10px;
     }
+
+    .couple-image {
+        max-width: 420px; /* Adjust size as needed */
+    }
+    
     /* SECTION 2 */
     #section2 .quran-verse {
         max-width: 350px;
